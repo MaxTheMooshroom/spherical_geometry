@@ -5,14 +5,14 @@ PVector[][] globe;
 int total = 200;
 
 // START SUPERSHAPE VARIABLES
-float m = 6;
-float m2 = 6;
-float n1 = 3000;
-float n12 = 250;
-float n2 = 1000;
-float n22 = 100;
-float n3 = 1000;
-float n32 = 100;
+float m = 1;
+float m2 = 1;
+float n1 = 2;
+float n12 = 2;
+float n2 = 2;
+float n22 = 2;
+float n3 = 2;
+float n32 = 2;
 float a = 1;
 float b = 1;
 // END SUPERSHAPE VARIABLES
@@ -72,10 +72,10 @@ void setup()
 
 float supershape(float theta, float _m, float _n1, float _n2, float _n3)
 {
-  float t1 = abs((1/a) * cos(_m * theta / 4));
+  float t1 = abs((1 / a) * cos(_m * theta / 4));
   t1 = pow(t1, _n2);
   
-  float t2 = abs((1/b) * sin(_m * theta / 4));
+  float t2 = abs((1 / b) * sin(_m * theta / 4));
   t2 = pow(t2, _n3);
   
   float t3 = t1 + t2;
@@ -93,7 +93,7 @@ void draw()
   
 
   
-  float r = 50;
+  float radius = 50;
   
   for(int i = 0; i < total + 1; i++)
   {
@@ -105,9 +105,9 @@ void draw()
       
       float r1 = supershape(lon, m2, n12, n22, n32);
       
-      float x = r * r1 * cos(lon) * r2 * cos(lat);
-      float y = r * r1 * sin(lon) * r2 * cos(lat);
-      float z = r * r2 * sin(lat);
+      float x = radius * r1 * cos(lon) * r2 * cos(lat);
+      float y = radius * r1 * sin(lon) * r2 * cos(lat);
+      float z = radius * r2 * sin(lat);
       
       globe[i][j] = new PVector(x, y, z);
     }
